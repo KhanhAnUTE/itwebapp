@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<div class="page-content py-0 pt-5">
+    <div class="form-v5-content m-0">
+        <form class="form-detail" action="#" method="post">
+            <h2>Đăng Ký</h2>
+            <div class="form-row">
+                <label for="full-name">Họ và Tên</label>
+                <input type="text" name="full-name" id="full-name" class="input-text" placeholder="Tên đầy đủ" required>
+                <i class="fas fa-user text-primary"></i>
+            </div>
+            <div class="form-row">
+                <label for="your-email">Email</label>
+                <input type="text" name="your-email" id="your-email" class="input-text " placeholder="Email của bạn"
+                    required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+                <i class="fas fa-envelope text-primary"></i>
+            </div>
+            <div class="form-row">
+                <label for="password">Mật khẩu</label>
+                <input type="password" name="password" id="password" class="input-text" placeholder="Mật khẩu của bạn"
+                    required>
+                <i class="fas fa-lock text-primary"></i>
+            </div>
+            <div class="form-row-last">
+                <input type="submit" name="register" class="register btn-primary" value="Đăng ký">
+            </div>
+        </form>
+    </div>
+</div>
