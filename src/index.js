@@ -17,6 +17,35 @@ app.use(morgan('combined'))
 app.engine('hbs', hbs.engine({
     extname: '.hbs',
     helpers: {
+        sum: (a, b) => {
+            if (a!=null && b !=null)
+                return a + b;
+            return 0
+        },
+        check: (a)=>{
+            if (a!=null)
+                return a
+            return 0
+        },
+        currency: (int)=>{
+            if (!int)
+                int = 0
+            return Intl.NumberFormat('vi-VI', {
+                style: 'currency',
+                currency: 'VND',
+              }).format(int) 
+        },
+        currencySum: (a, b) => {
+            if (a!=null && b !=null)
+                return Intl.NumberFormat('vi-VI', {
+                    style: 'currency',
+                    currency: 'VND',
+                }).format(a + b)
+            return Intl.NumberFormat('vi-VI', {
+                style: 'currency',
+                currency: 'VND',
+            }).format(0)
+        }
     }
 })) //define and config
 app.set('view engine', 'hbs') //set

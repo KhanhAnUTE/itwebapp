@@ -13,188 +13,41 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    <tr>
-                        <td class="align-middle text-left flex max-w-xl">
-                            <img src="img/product-0.jpg" alt="" class="mr-0 w-32"> 
-                            <a href="detail.html" class="p-1 hide-content-1 m-0 text-lg font-bold">Thử thách Vượt Vòng Quay Cá Mập<br><span class="hide-content-2 text-base font-normal">Đồ Chơi LEGO Thử Thách Vượt Vòng Quay Cá Mập 60342 (122 chi tiết)
-                            Tham gia chương trình truyền hình LEGO® City Adventures phi công Chuck D. Goldberg để có những màn bay nhào lộn và cuộc thi </span></a>  
-                        </td>
+                    {{#each product}}
+                        <tr>
+                            <td class="align-middle text-left flex max-w-xl">
+                                <img src="{{this.link}}" alt="" class="mr-0 w-32"> 
+                                <a href="shop/{{this.slug}}" class="p-1 hide-content-1 m-0 text-lg font-bold">{{this.product}}<br><span class="hide-content-2 text-base font-normal">{{this.description}}</span></a>  
+                            </td>
 
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
+                            <td class="align-middle">{{currency this.price}}</td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-sm btn-primary btn-minus" href="cart/pacth?type=minus&user_id={{this.user_id}}&product_id={{this.product_id}}">
+                                        <i class="fa fa-minus"></i>
+                                        </a>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="{{this.quantity}}">
+                                    <div class="input-group-btn">
+                                        <a class="btn btn-sm btn-primary btn-plus" href="cart/pacth?type=plus&user_id={{this.user_id}}&product_id={{this.product_id}}">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle text-left flex max-w-xl">
-                            <img src="img/product-0.jpg" alt="" class="mr-0 w-32"> 
-                            <a href="detail.html" class="p-1 hide-content-1 m-0 text-lg font-bold">Thử thách Vượt Vòng Quay Cá Mập<br><span class="hide-content-2 text-base font-normal">Đồ Chơi LEGO Thử Thách Vượt Vòng Quay Cá Mập 60342 (122 chi tiết)
-                            Tham gia chương trình truyền hình LEGO® City Adventures phi công Chuck D. Goldberg để có những màn bay nhào lộn và cuộc thi </span></a>  
-                        </td>
-
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle text-left flex max-w-xl">
-                            <img src="img/product-0.jpg" alt="" class="mr-0 w-32"> 
-                            <a href="detail.html" class="p-1 hide-content-1 m-0 text-lg font-bold">Thử thách Vượt Vòng Quay Cá Mập<br><span class="hide-content-2 text-base font-normal">Đồ Chơi LEGO Thử Thách Vượt Vòng Quay Cá Mập 60342 (122 chi tiết)
-                            Tham gia chương trình truyền hình LEGO® City Adventures phi công Chuck D. Goldberg để có những màn bay nhào lộn và cuộc thi </span></a>  
-                        </td>
-
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle text-left flex max-w-xl">
-                            <img src="img/product-0.jpg" alt="" class="mr-0 w-32"> 
-                            <a href="detail.html" class="p-1 hide-content-1 m-0 text-lg font-bold">Thử thách Vượt Vòng Quay Cá Mập<br><span class="hide-content-2 text-base font-normal">Đồ Chơi LEGO Thử Thách Vượt Vòng Quay Cá Mập 60342 (122 chi tiết)
-                            Tham gia chương trình truyền hình LEGO® City Adventures phi công Chuck D. Goldberg để có những màn bay nhào lộn và cuộc thi </span></a>  
-                        </td>
-
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle text-left flex max-w-xl">
-                            <img src="img/product-0.jpg" alt="" class="mr-0 w-32"> 
-                            <a href="detail.html" class="p-1 hide-content-1 m-0 text-lg font-bold">Thử thách Vượt Vòng Quay Cá Mập<br><span class="hide-content-2 text-base font-normal">Đồ Chơi LEGO Thử Thách Vượt Vòng Quay Cá Mập 60342 (122 chi tiết)
-                            Tham gia chương trình truyền hình LEGO® City Adventures phi công Chuck D. Goldberg để có những màn bay nhào lộn và cuộc thi </span></a>  
-                        </td>
-
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle text-left flex max-w-xl">
-                            <img src="img/product-0.jpg" alt="" class="mr-0 w-32"> 
-                            <a href="detail.html" class="p-1 hide-content-1 m-0 text-lg font-bold">Thử thách Vượt Vòng Quay Cá Mập<br><span class="hide-content-2 text-base font-normal">Đồ Chơi LEGO Thử Thách Vượt Vòng Quay Cá Mập 60342 (122 chi tiết)
-                            Tham gia chương trình truyền hình LEGO® City Adventures phi công Chuck D. Goldberg để có những màn bay nhào lộn và cuộc thi </span></a>  
-                        </td>
-
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle text-left flex max-w-xl">
-                            <img src="img/product-0.jpg" alt="" class="mr-0 w-32"> 
-                            <a href="detail.html" class="p-1 hide-content-1 m-0 text-lg font-bold">Thử thách Vượt Vòng Quay Cá Mập<br><span class="hide-content-2 text-base font-normal">Đồ Chơi LEGO Thử Thách Vượt Vòng Quay Cá Mập 60342 (122 chi tiết)
-                            Tham gia chương trình truyền hình LEGO® City Adventures phi công Chuck D. Goldberg để có những màn bay nhào lộn và cuộc thi </span></a>  
-                        </td>
-
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="align-middle">599.000đ</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                    </tr>
+                            </td>
+                            <td class="align-middle">{{currency this.to_price}}</td>
+                            <td class="align-middle">
+                                <a class="btn btn-sm btn-primary" href="cart/delete?product_id={{this.product_id}}&user_id={{this.user_id}}"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                        {{else}}
+                        <div>
+                            <tr>
+                                <td colspan="5">Không có sản phẩm trong giỏ hàng</td> 
+                            </tr>
+                        </div>
+                    {{/each}}
                 </tbody>
             </table>
         </div>
@@ -215,22 +68,27 @@
                 <div class="card border-secondary mb-0 flex-row w-100">
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Tổng thanh toán (6 sản phẩm)</h6>
-                            <h6 class="font-weight-medium">$150</h6>
+                            <h6 class="font-weight-medium">Tổng thanh toán ({{check count.count}} sản phẩm)</h6>
+                            <h6 class="font-weight-medium">{{currency sum.sum}}</h6>
                         </div>
                         <div class="d-flex justify-content-between">
+
                             <h6 class="font-weight-medium">Phí vận chuyển</h6>
-                            <h6 class="font-weight-medium">$10</h6>
+                            {{#if product}}
+                                <h6 class="font-weight-medium">{{currency shipFee}} đ</h6>
+                            {{else}}
+                                <h6 class="font-weight-medium">0 đ</h6>
+                            {{/if}}
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Tổng</h5>
-                            <h5 class="font-weight-bold">$160</h5>
+                            <h5 class="font-weight-bold">{{currencySum sum.sum shipFee}} đ</h5>
                         </div>
                         <div class="d-flex justify-content-between mt-2">
                             <span class="">Tiết kiệm</span>
-                            <span class="">$10</span>
+                            <span class="">{{currency saveFee}}đ</span>
                         </div>
                         <button class="btn btn-block btn-primary my-3 py-3 w-48">Mua hàng</button>
                     </div>
@@ -262,22 +120,26 @@
                 <div class="card border-secondary mb-0 flex-row w-100">
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Tổng thanh toán (6 sản phẩm)</h6>
-                            <h6 class="font-weight-medium">$150</h6>
+                            <h6 class="font-weight-medium">Tổng thanh toán ({{count.count}} sản phẩm)</h6>
+                            <h6 class="font-weight-medium">{{currency sum.sum}} đ</h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Phí vận chuyển</h6>
-                            <h6 class="font-weight-medium">$10</h6>
+                            {{#if product}}
+                                <h6 class="font-weight-medium">{{currency shipFee}} đ</h6>
+                            {{else}}
+                                <h6 class="font-weight-medium">0 đ</h6>
+                            {{/if}}
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Tổng</h5>
-                            <h5 class="font-weight-bold">$160</h5>
+                            <h5 class="font-weight-bold">{{currencySum sum.sum shipFee}} đ</h5>
                         </div>
                         <div class="d-flex justify-content-between mt-2">
                             <span class="">Tiết kiệm</span>
-                            <span class="">$10</span>
+                            <span class="">{{currency saveFee}}đ</span>
                         </div>
                         <button class="btn btn-block btn-primary my-3 py-3 w-48">Mua hàng</button>
                     </div>
@@ -288,16 +150,21 @@
 </div>
 <!-- Fixed Cart End -->
 
+<form action="shop/count-product" name="quantity-form"></form>
+
 
 <script>
-    $(window).scroll(function(){
-        var footer = document.getElementById("footer")
-        if (window.scrollY >= document.body.scrollHeight - footer.scrollHeight - screen.height)
-        {
-            document.getElementById("cart-summary").style.display = "none"
-        }
-        else{
-            document.getElementById("cart-summary").style.display = "block"
-        }
+    document.addEventListener("DOMContentLoaded", ()=>{
+
+        $(window).scroll(function(){
+            var footer = document.getElementById("footer")
+            if (window.scrollY >= document.body.scrollHeight - footer.scrollHeight - screen.height)
+            {
+                document.getElementById("cart-summary").style.display = "none"
+            }
+            else{
+                document.getElementById("cart-summary").style.display = "block"
+            }
+        })
     })
 </script>

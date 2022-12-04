@@ -1,4 +1,3 @@
-const { config } = require('../../config/db')
 const db = require('../../config/db')
 
 const Products = function(product){
