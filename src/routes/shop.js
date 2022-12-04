@@ -3,7 +3,7 @@ const router = express.Router();
 
 const shopController = require('../app/controllers/ShopController')
 
-router.use('/:slug', shopController.detail)
-router.use('/', shopController.show)
+router.get('/:slug', shopController.detail)
+router.get('/', shopController.show)
 
 module.exports = router

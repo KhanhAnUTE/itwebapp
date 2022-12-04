@@ -4,14 +4,25 @@ class ShopController{
 
     //GET /shop
     show(req, res){
-        Products.getAllProducts((items) => {
-            res.render('shop', {
-                products: items[0],
-                genders: items[1],
-                brands: items[2],
-                for_ages: items[3],
-                page: 'Cửa hàng',
-            })
+        if (req.query.brandsId) res.locals.brandsId = req.query.brandsId
+        if (req.query.gendersId) res.locals.gendersId = req.query.gendersId
+        if (req.query.for_agesId) res.locals.for_agesId = req.query.for_agesId
+        if (req.query.page) res.locals.page = req.query.page
+        if (req.query.sort) res.locals.sort = req.query.sort
+        if (req.query.catalog) res.locals.catalog = req.query.catalog
+
+        Products.getFilter(res.locals, (items) => {
+                res.render('shop', {
+                    products: items[0],
+                    genders: items[1],
+                    brands: items[2],
+                    for_ages: items[3],
+                    catalogies: items[4],
+                    page: 'Cửa hàng',
+                })
+            // else 
+                // res.redirect('back')
+                // res.send(items)
         })
         // res.render('shop')
     }

@@ -9655,3 +9655,6 @@ a:hover{
   background-color: var(--root-color) !important;
 }
 
+li.active .page-link{
+  color: white !important;
+}

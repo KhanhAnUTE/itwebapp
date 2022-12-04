@@ -2,54 +2,59 @@
 <div class="container-fluid pt-4">
     <div class="row px-xl-5">
         <!-- Shop Sidebar Start -->
-        <div class="col-lg-3 col-md-12">
+        <form class="col-lg-3 col-md-12" method="GET" action="" name="filter-form" id="filter-form">
             <!-- Age Start -->
             <div class="border-bottom mb-4 pb-4">
                 <h5 class="font-weight-semi-bold mb-4">Tuổi</h5>
-                <form>
                     {{#each for_ages}}
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-start mb-3 pl-0">
+                            {{#if this.isChecked}}
+                            <p>OKay</p>
+                            {{/if}}
                             <input type="checkbox" class="" name="for_agesId[]" value="{{this.id}}">
                             <label class="m-0 ml-3">{{this.for_age}}</label>
                         </div>
                     {{/each}}
-                </form>
             </div>
             <!-- Age End -->
             
             <!-- Gender Start -->
             <div class="border-bottom mb-4 pb-4">
                 <h5 class="font-weight-semi-bold mb-4">Giới tính</h5>
-                <form>
                     {{#each genders}}
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-start mb-3 pl-0">
                             <input type="checkbox" class="" name="gendersId[]" value="{{this.id}}">
                             <label class="m-0 ml-3">{{this.gender}}</label>
                         </div>
                     {{/each}}
-                </form>
             </div>
             <!-- Gender End -->
 
             <!-- Brand Start -->
-            <div class="mb-5">
+            <div class="border-bottom mb-4 pb-4">
                 <h5 class="font-weight-semi-bold mb-4">Thương hiệu</h5>
-                <form>
                     {{#each brands}}
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-start mb-3 pl-0">
                             <input type="checkbox" class="" name="brandsId[]" value="{{this.id}}">
                             <label class="m-0 ml-3">{{this.brand}}</label>
                         </div>
-                    {{/each}} 
-                </form>
+                    {{/each}}
             </div>
             <!-- Size End -->
-        </div>
+            
+            <div class="mb-5">
+                <button class="btn-primary px-4 py-2" type="submit">
+                    Lọc
+                </button>
+            </div>
+
+        </form>
         <!-- Shop Sidebar End -->
 
         <!-- Shop Product Start -->
         <div class="col-lg-9 col-md-12">
             <div class="row pb-3">
+                {{#if products}}
                 <div class="col-12 pb-1">
                     <div class="d-flex align-items-center justify-content-end mb-4">
                         <div class="dropdown ml-4">
@@ -57,11 +62,15 @@
                                     aria-expanded="false">
                                         Sắp xếp
                                     </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                <a class="dropdown-item" href="#">Giá cao</a>
-                                <a class="dropdown-item" href="#">Giá thấp</a>
-                                <a class="dropdown-item" href="#">Nổi bật</a>
-                            </div>
+                            <form action="" name="sort">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                                    {{!-- <input class="dropdown-item" name="sort" type="submit" value="Giá cao"></input> --}}
+                                    {{!-- <input class="dropdown-item" name="sort" type="submit" value="Giá thấp"></input> --}}
+                                    <a class="dropdown-item" href="/shop?sort=asc">Giá cao đến thấp</a>
+                                    <a class="dropdown-item" href="/shop?sort=desc">Giá thấp đến cao</a>
+                                    {{!-- <a class="dropdown-item" href="#">Nổi bật</a> --}}
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -78,13 +87,12 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
+                            <a href="/shop/{{this.slug}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
                             <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
                         </div>
                     </div>
                 </div>
                 {{/each}}
-
                 <div class="col-12 pb-1">
                     <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center mb-3">
@@ -94,9 +102,9 @@
                             <span class="sr-only">Previous</span>
                             </a>
                         </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item active"><a class="page-link" href="/shop?page=1">1</a></li>
+                        <li class="page-item"><a class="page-link" href="/shop?page=2">2</a></li>
+                        <li class="page-item"><a class="page-link" href="/shop?page=3">3</a></li>
                         <li class="page-item">
                             <a class="page-link" href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
@@ -106,23 +114,14 @@
                         </ul>
                     </nav>
                 </div>
+                {{else}}
+                <div class="align-center">
+                    <p class="text-center block">Không tìm thấy sản phẩm</p>
+                </div>
+                {{/if}}
             </div>
         </div>
         <!-- Shop Product End -->
     </div>
 </div>
 <!-- Shop End -->
-
-<script>
-    document.addEventListener('DOMContentLoaded', function(){
-        var brandsId;
-        var gendersId;
-        var for_agesId;
-
-        var brandsCheckbox = $('input[name="brandsId[]"]')
-        brandsCheckbox.change(function(){
-            console.log('hello')
-        })
-        
-    })
-</script>

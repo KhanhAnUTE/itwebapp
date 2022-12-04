@@ -74,23 +74,9 @@
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: 470px; z-index: 10;">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown">Đồ chơi theo phim <i class="fa fa-angle-down float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                <a href="" class="dropdown-item">Con quay</a>
-                                <a href="" class="dropdown-item">Siêu anh hùng</a>
-                                <a href="" class="dropdown-item">Siêu thú</a>
-                            </div>
-                        </div>
-                        <a href="" class="nav-item nav-link">Đồ chơi lắp ghép</a>
-                        <a href="" class="nav-item nav-link">Búp bê</a>
-                        <a href="" class="nav-item nav-link">Robot</a>
-                        <a href="" class="nav-item nav-link">Đồ chơi phương tiện</a>
-                        <a href="" class="nav-item nav-link">Đồ chơi sáng tạo</a>
-                        <a href="" class="nav-item nav-link">Đồ chơi vận động</a>
-                        <a href="" class="nav-item nav-link">Đồ chơi mô phỏng</a>
-                        <a href="" class="nav-item nav-link">Đồ chơi bay</a>
-                        <a href="" class="nav-item nav-link">Game</a>
+                        {{#each catalogies}}
+                        <a href="/shop?catalog={{this.id}}" class="nav-item nav-link">{{this.catagory}}</a>
+                        {{/each}}
                     </div>
                 </nav>
             </div>
