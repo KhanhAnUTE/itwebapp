@@ -15,13 +15,13 @@ const Products = function(product){
 }
 
 Products.getAllProducts = (callback) => {
-    db.query("select * from products", (err, products) => {
+    db.query("select * from products, images where products.id = images.product_id and images.isdefault = 1; select * from genders; select * from brands; select * from for_ages", (err, items) => {
         if (err){
             console.log(err)
             callback(null)
         }
         else{
-            callback(products)
+            callback(items)
         }
     })
 }

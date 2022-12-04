@@ -7,31 +7,12 @@
             <div class="border-bottom mb-4 pb-4">
                 <h5 class="font-weight-semi-bold mb-4">Tuổi</h5>
                 <form>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="price-1">
-                        <label class="custom-control-label" for="price-1">Trên 12 tuổi</label>
-                        <span class="badge border font-weight-normal">150</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="price-2">
-                        <label class="custom-control-label" for="price-2">6 -11 tuổi</label>
-                        <span class="badge border font-weight-normal">295</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="price-3">
-                        <label class="custom-control-label" for="price-3">4 - 6 tuổi</label>
-                        <span class="badge border font-weight-normal">246</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="price-4">
-                        <label class="custom-control-label" for="price-4">1 - 3 tuổi</label>
-                        <span class="badge border font-weight-normal">145</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                        <input type="checkbox" class="custom-control-input" id="price-5">
-                        <label class="custom-control-label" for="price-5">0 - 12 tháng</label>
-                        <span class="badge border font-weight-normal">168</span>
-                    </div>
+                    {{#each for_ages}}
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-start mb-3 pl-0">
+                            <input type="checkbox" class="" name="for_agesId[]" value="{{this.id}}">
+                            <label class="m-0 ml-3">{{this.for_age}}</label>
+                        </div>
+                    {{/each}}
                 </form>
             </div>
             <!-- Age End -->
@@ -40,21 +21,12 @@
             <div class="border-bottom mb-4 pb-4">
                 <h5 class="font-weight-semi-bold mb-4">Giới tính</h5>
                 <form>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="color-1">
-                        <label class="custom-control-label" for="color-1">Boy</label>
-                        <span class="badge border font-weight-normal">150</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="color-2">
-                        <label class="custom-control-label" for="color-2">Unisex</label>
-                        <span class="badge border font-weight-normal">295</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="color-3">
-                        <label class="custom-control-label" for="color-3">Girl</label>
-                        <span class="badge border font-weight-normal">246</span>
-                    </div>
+                    {{#each genders}}
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-start mb-3 pl-0">
+                            <input type="checkbox" class="" name="gendersId[]" value="{{this.id}}">
+                            <label class="m-0 ml-3">{{this.gender}}</label>
+                        </div>
+                    {{/each}}
                 </form>
             </div>
             <!-- Gender End -->
@@ -63,46 +35,12 @@
             <div class="mb-5">
                 <h5 class="font-weight-semi-bold mb-4">Thương hiệu</h5>
                 <form>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-1">
-                        <label class="custom-control-label" for="size-1">GUNDAM</label>
-                        <span class="badge border font-weight-normal">150</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-2">
-                        <label class="custom-control-label" for="size-2">SIKU</label>
-                        <span class="badge border font-weight-normal">295</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-3">
-                        <label class="custom-control-label" for="size-3">HOT WHEELS</label>
-                        <span class="badge border font-weight-normal">246</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-4">
-                        <label class="custom-control-label" for="size-4">VECTO</label>
-                        <span class="badge border font-weight-normal">145</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-5">
-                        <label class="custom-control-label" for="size-5">SCHLEIGH</label>
-                        <span class="badge border font-weight-normal">168</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-6">
-                        <label class="custom-control-label" for="size-6">SUPERWINGS</label>
-                        <span class="badge border font-weight-normal">168</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="size-7">
-                        <label class="custom-control-label" for="size-7">MAISTO</label>
-                        <span class="badge border font-weight-normal">168</span>
-                    </div>
-                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                        <input type="checkbox" class="custom-control-input" id="size-8">
-                        <label class="custom-control-label" for="size-8">BARBIE</label>
-                        <span class="badge border font-weight-normal">168</span>
-                    </div>
+                    {{#each brands}}
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-start mb-3 pl-0">
+                            <input type="checkbox" class="" name="brandsId[]" value="{{this.id}}">
+                            <label class="m-0 ml-3">{{this.brand}}</label>
+                        </div>
+                    {{/each}} 
                 </form>
             </div>
             <!-- Size End -->
@@ -131,12 +69,12 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <a href="/shop/{{this.slug}}"><img class="img-fluid w-100" src="img/product-0.jpg" alt=""></a>
+                            <a href="/shop/{{this.slug}}"><img class="img-fluid w-100" src="{{this.link}}" alt=""></a>
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <a href="/shop/{{this.slug}}"><h6 class="text-truncate mb-3">{{this.name}}</h6></a>
                             <div class="d-flex justify-content-center">
-                                <h6>{{this.price}}</h6><h6 class="text-muted ml-2"><del>{{this.price}}</del></h6>
+                                <h6>{{this.price}} đ</h6><h6 class="text-muted ml-2"><del>{{this.price}}</del></h6>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
@@ -146,142 +84,7 @@
                     </div>
                 </div>
                 {{/each}}
-                {{!-- <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-0.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Thử thách Vượt Vòng Quay Cá Mập</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>599.000đ</h6><h6 class="text-muted ml-2"><del>599.000đ</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-0.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Thử thách Vượt Vòng Quay Cá Mập</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>599.000đ</h6><h6 class="text-muted ml-2"><del>599.000đ</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-0.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Thử thách Vượt Vòng Quay Cá Mập</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>599.000đ</h6><h6 class="text-muted ml-2"><del>599.000đ</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-0.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Thử thách Vượt Vòng Quay Cá Mập</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>599.000đ</h6><h6 class="text-muted ml-2"><del>599.000đ</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-0.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Thử thách Vượt Vòng Quay Cá Mập</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>599.000đ</h6><h6 class="text-muted ml-2"><del>599.000đ</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-0.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Thử thách Vượt Vòng Quay Cá Mập</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>599.000đ</h6><h6 class="text-muted ml-2"><del>599.000đ</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-0.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Thử thách Vượt Vòng Quay Cá Mập</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>599.000đ</h6><h6 class="text-muted ml-2"><del>599.000đ</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-0.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Thử thách Vượt Vòng Quay Cá Mập</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>599.000đ</h6><h6 class="text-muted ml-2"><del>599.000đ</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ</a>
-                        </div>
-                    </div>
-                </div> --}}
+
                 <div class="col-12 pb-1">
                     <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center mb-3">
@@ -309,3 +112,17 @@
     </div>
 </div>
 <!-- Shop End -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var brandsId;
+        var gendersId;
+        var for_agesId;
+
+        var brandsCheckbox = $('input[name="brandsId[]"]')
+        brandsCheckbox.change(function(){
+            console.log('hello')
+        })
+        
+    })
+</script>

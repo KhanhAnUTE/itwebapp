@@ -32,18 +32,6 @@
         return false;
     });
 
-    //Cart sumary
-    $(window).scroll(function(){
-        var footer = document.getElementById("footer")
-        if (window.scrollY >= document.body.scrollHeight - footer.scrollHeight - screen.height)
-        {
-            document.getElementById("cart-summary").style.display = "none"
-        }
-        else{
-            document.getElementById("cart-summary").style.display = "block"
-        }
-    })
-
     // Vendor carousel
     $('.vendor-carousel').owlCarousel({
         loop: true,

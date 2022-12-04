@@ -4,8 +4,14 @@ class ShopController{
 
     //GET /shop
     show(req, res){
-        Products.getAllProducts((products) => {
-            res.render('shop', {products, page: 'Cửa hàng'})
+        Products.getAllProducts((items) => {
+            res.render('shop', {
+                products: items[0],
+                genders: items[1],
+                brands: items[2],
+                for_ages: items[3],
+                page: 'Cửa hàng',
+            })
         })
         // res.render('shop')
     }
