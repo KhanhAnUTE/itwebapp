@@ -2,7 +2,7 @@ class LoginController{
 
     //GET /login
     show(req, res){
-        res.render('login')
+        res.render('login', {page: 'Đăng nhập'})
     }
 }
 

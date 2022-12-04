@@ -6,6 +6,7 @@ const app = express()
 const port = 3000
 
 const route = require('./routes')
+const db = require('./config/db')
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -14,7 +15,9 @@ app.use(morgan('combined'))
 
 //use template engine - handlebars
 app.engine('hbs', hbs.engine({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+    }
 })) //define and config
 app.set('view engine', 'hbs') //set
 app.set('views', path.join(__dirname, 'resources/views'))

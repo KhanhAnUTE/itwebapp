@@ -2,7 +2,7 @@ class ContactController{
 
     //GET /contact
     show(req, res){
-        res.render('contact')
+        res.render('contact', {page: 'Liên hệ'})
     }
 }
 

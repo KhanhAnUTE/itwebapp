@@ -2,7 +2,7 @@ class CartController{
 
     //GET /cart
     show(req, res){
-        res.render('cart')
+        res.render('cart', {page: 'Giỏ hàng'})
     }
 }
 
