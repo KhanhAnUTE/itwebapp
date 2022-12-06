@@ -23,7 +23,7 @@ Carts.add = (user_id, product_id, quantity, to_price, callback)=>{
 }
 
 Carts.updateToPrice = (user_id, product_id, callback) => {
-    var sqlUpdateToPrice = "Update carts set to_price = quantity * (select price from products where id = " + product_id + ") where user_id = " + user_id + " and product_id = " + product_id
+    var sqlUpdateToPrice = "Update carts set to_price = quantity * (select price from products where product_id = " + product_id + ") where user_id = " + user_id + " and product_id = " + product_id
 
     db.query(sqlUpdateToPrice, (err, flag)=>{
         if (err){
@@ -87,7 +87,7 @@ Carts.modifyQuantity = (user_id, product_id, type, callback) =>{
 }
 
 Carts.getCartDetail = (user_id, callback) =>{
-    var sqlGetCartItem = "select * from carts, products, users, images where carts.product_id = products.id and carts.user_id = users.id and products.id = images.product_id and images.isdefault = 1 and user_id = " + user_id
+    var sqlGetCartItem = "select * from carts, products, users, images where carts.product_id = products.product_id and carts.user_id = users.user_id and products.product_id = images.product_id and images.isdefault = 1 and carts.user_id = " + user_id
     var sqlCountCartItem = "select sum(quantity) as count from carts where user_id = " + user_id + " group by user_id"
     var sqlSumOrder = "select sum(to_price) as sum from carts where user_id = " + user_id + " group by user_id"
     var sqlSites = "select count(user_id) as count from carts where user_id = " + user_id + " group by user_id; select * from catalogies"
@@ -104,11 +104,11 @@ Carts.getCartDetail = (user_id, callback) =>{
 }
 
 Carts.getCheckOut = (user_id, callback)=>{
-    var sqlGetCartItem = "select * from carts, products, users, images where carts.product_id = products.id and carts.user_id = users.id and products.id = images.product_id and images.isdefault = 1 and user_id = " + user_id
+    var sqlGetCartItem = "select * from carts, products, users, images where carts.product_id = products.product_id and carts.user_id = users.user_id and products.product_id = images.product_id and images.isdefault = 1 and carts.user_id = " + user_id
     var sqlCountCartItem = "select sum(quantity) as count from carts where user_id = " + user_id + " group by user_id"
     var sqlSumOrder = "select sum(to_price) as sum from carts where user_id = " + user_id + " group by user_id"
     var sqlSites = "select count(user_id) as count from carts where user_id = " + user_id + " group by user_id; select * from catalogies"
-    var sqlGetAddress = "select * from addresses, users where addresses.user_id = users.id"
+    var sqlGetAddress = "select * from addresses, users where addresses.user_id = users.user_id"
 
     db.query(sqlGetCartItem + "; " + sqlCountCartItem + "; " + sqlSumOrder + "; " + sqlSites + "; " + sqlGetAddress, (err, items) => {
         if (err){

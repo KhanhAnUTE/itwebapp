@@ -15,7 +15,7 @@ const Products = function(product){
 }
 
 Products.getAllProducts = (callback) => {
-    db.query("select * from products, images where products.id = images.product_id and images.isdefault = 1; select * from genders; select * from brands; select * from for_ages", (err, items) => {
+    db.query("select * from products, images where products.product_id = images.product_id and images.isdefault = 1; select * from genders; select * from brands; select * from for_ages", (err, items) => {
         if (err){
             console.log(err)
             callback(null)
@@ -26,11 +26,9 @@ Products.getAllProducts = (callback) => {
     })
 }
 
-//select * from products, brands, genders, for_ages, catalogies where products.brand_id = brands.id and products.gender_id = genders.id and products.for_age_id = for_ages.id and products.catalog_id = catalogies.id and products.slug = ?;
-
 Products.getProductDetailBySlug = (slug, callback) => {
     var user_id = 1
-    db.query("select * from products, brands, genders, for_ages, catalogies where products.brand_id = brands.id and products.gender_id = genders.id and products.for_age_id = for_ages.id and products.catalog_id = catalogies.id and products.slug = ?; select link from products, images where products.id = images.product_id and slug = ?; select count(user_id) as count from carts where user_id = " + user_id + " group by user_id; select * from catalogies" , [slug, slug], (err, product) => {
+    db.query("select * from products, brands, genders, for_ages, catalogies where products.brand_id = brands.brand_id and products.gender_id = genders.gender_id and products.for_age_id = for_ages.for_age_id and products.catalog_id = catalogies.catalog_id and products.slug = ?; select link from products, images where products.product_id = images.product_id and slug = ?; select count(user_id) as count from carts where carts.user_id = " + user_id + " group by user_id; select * from catalogies" , [slug, slug], (err, product) => {
         if (err){
             console.log(err)
             callback(null)
@@ -46,7 +44,7 @@ Products.getFilter = (user_id, filter, callback) => {
     const sort = filter.sort || 'asc';
     const page = (filter.page - 1) * show || 0;
     
-    var sqlQuery1 = "select * from products, images, brands, genders, for_ages, catalogies where products.id = images.product_id and products.brand_id = brands.id and products.gender_id = genders.id and products.for_age_id = for_ages.id and products.catalog_id = catalogies.id and images.isdefault = 1"
+    var sqlQuery1 = "select * from products, images, brands, genders, for_ages, catalogies where products.product_id = images.product_id and products.brand_id = brands.brand_id and products.gender_id = genders.gender_id and products.for_age_id = for_ages.for_age_id and products.catalog_id = catalogies.catalog_id and images.isdefault = 1"
     var sqlQuery2 = ";select * from genders; select * from brands; select * from for_ages; select * from catalogies; select count(user_id) as count from carts where user_id = " + user_id + " group by user_id"
     
     if (filter.brandsId){

@@ -5,29 +5,21 @@ const loginRouter = require('./login')
 const signupRouter = require('./signup')
 const homeRouter = require('./home')
 const checkoutRouter = require('./checkout')
+const testRouter = require('./test')
 
 const bodyParser = require('body-parser')
-
 
 //body-parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 function route(app){
-    app.use('/contact', contactRouter)
-    app.use('/shop', shopRouter)
-    app.use('/cart', cartRouter)
-    app.use('/login', loginRouter)
-    app.use('/signup', signupRouter)
-    app.use('/checkout', checkoutRouter)
-
-    
-    app.get('/test', (req, res)=>{
-        res.render('test')
-    })
-    app.post('/test', urlencodedParser, (req, res)=>{
-        res.send(req.body)
-        // res.render('Xin chào ' + req.body.name)
-    })
+    app.use('/contact', urlencodedParser, contactRouter)
+    app.use('/shop', urlencodedParser, shopRouter)
+    app.use('/cart', urlencodedParser, cartRouter)
+    app.use('/login', urlencodedParser, loginRouter)
+    app.use('/signup', urlencodedParser, signupRouter)
+    app.use('/checkout', urlencodedParser, checkoutRouter)
+    app.use('/test', urlencodedParser, testRouter)
 
     app.use('/', homeRouter)
     
