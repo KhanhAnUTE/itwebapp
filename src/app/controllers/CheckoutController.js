@@ -51,14 +51,22 @@ class Checkout{
 
         //init order_item
         var length = req.body["productId[]"].length
-        for (var i = 0; i < length; i++){
+        if (length == 1) {
             order_items.push({})
-            order_items[i].product_id = req.body["productId[]"][i]
-            order_items[i].quantity = req.body["quantity[]"][i]
-            order_items[i].total_price = req.body["total_price[]"][i]
-            
+            order_items[0].product_id = req.body["productId[]"]
+            order_items[0].quantity = req.body["quantity[]"]
+            order_items[0].total_price = req.body["total_price[]"]
+
+        } else{
+            for (var i = 0; i < length; i++){
+                order_items.push({})
+                order_items[i].product_id = req.body["productId[]"][i]
+                order_items[i].quantity = req.body["quantity[]"][i]
+                order_items[i].total_price = req.body["total_price[]"][i]
+            }
         }
         
+
         // res.send(order_items)   
         Orders.makeOrder(order, (flag)=>{
             // console.log(flag)
@@ -69,12 +77,11 @@ class Checkout{
                 order_items[i].order_id = order_id
                 Orders.makeOrderItem(order_items[i], (flag)=>{
                     // console.log(flag)
+                    res.redirect('/me')
                 })
             }
         })
-        
 
-        res.redirect('/me')
     }
 }
 

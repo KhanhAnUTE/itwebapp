@@ -6,7 +6,8 @@ class MeController{
     //GET /me
     show(req, res){
         var user_id = 1
-        Orders.getOrderDetail(user_id, (items) =>{
+        Orders.getOrderDetail(user_id, (result) =>{
+            var items = result[0]
             // res.send(items)
             var products = []
             for (var i = 0; i < items.length; i ++)
@@ -78,6 +79,8 @@ class MeController{
             // res.send(products)
             res.render('me', {
                 product: products,
+                countCart: result[1][0],
+                catalogies: result[2],
                 page: 'Thông tin cá nhân',
             })   
         })
