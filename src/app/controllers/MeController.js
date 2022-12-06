@@ -1,7 +1,79 @@
 const Orders = require('../models/OrderModel');
-const Sites = require('../models/SiteModel')
+const Users = require('../models/UserModle')
 
 class MeController{
+    updateInfo(req, res){
+        var user_id = 1
+        Users.updateUser(req.body, user_id, (flag)=>{
+            res.redirect('info')
+        })
+    }
+
+    updateAddr(req, res){
+        var user_id = 1
+    }
+
+    save(req, res){
+        var user_id = 1
+        Users.updateAddr(req.body, user_id, (flag)=>{
+            res.redirect('addr')  
+        })
+    }
+
+    //GET /edit
+    edit(req, res){
+        var user_id = 1
+        if (req.query.addr_id){
+            if (!req.query.delete)
+                Users.getAddrById(req.query.addr_id, user_id, (items)=>{
+                    res.render('editaddr', {
+                        page: 'Chỉnh sửa địa chỉ',
+                        addr: items[0][0],
+                        me: items[1][0],
+                        countCart: items[2][0],
+                        catalogies: items[3],
+                    })
+                })
+            else
+                Users.deleteById(req.query.addr_id, user_id, (flag) => {
+                    res.redirect('back')
+                })
+        }
+        else{
+            res.render('editaddr', {
+                page: "Thêm địa chỉ mới"
+            })
+        }
+    }
+
+    addr(req, res){
+        var user_id = 1
+        Users.getAddr(user_id, (items)=>{
+            // res.send(items)
+
+            res.render('addr', {
+                page: "Địa chỉ thanh toán",
+                addr: items[0],
+                me: items[1][0],
+                countCart: items[2][0],
+                catalogies: items[3],
+            })
+        })
+    }
+
+    info(req, res){
+        var user_id = 1
+        Users.getUserInfo(user_id, (items)=>{
+            // res.send(items)
+            res.render('info', {
+                page: "Thông tin cá nhân",
+                me: items[0][0],
+                countCart: items[1][0],
+                catalogies: items[2],
+            })
+        })
+            
+    }
 
     //GET /me
     show(req, res){
@@ -81,10 +153,10 @@ class MeController{
                 product: products,
                 countCart: result[1][0],
                 catalogies: result[2],
+                me: result[3][0],
                 page: 'Thông tin cá nhân',
             })   
         })
-
     }
 
 }

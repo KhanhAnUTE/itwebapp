@@ -15,10 +15,7 @@ Sites.homeDetail = (user_id, callback)=>{
             callback(null)
             return
         }
-        if (items!=null && items.length != 0)
-            callback(items)
-        else
-            callback(null)
+        callback(items)
     })
 }
 

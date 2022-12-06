@@ -6,13 +6,17 @@
             <div class="card mb-4 border-0 bg-secondary pl-4">
                 <div class="card-body">
                     <div class="flex mb-4">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                            alt="avatar" class="rounded-circle img-fluid" style="width: 70px;">
-                        <h5 class="my-1 ml-3">John Smith</h5>
+                        {{#if me.avatar}}
+                        <img src="{{me.avatar}}" alt="avatar" class="rounded-circle img-fluid" style="width: 70px; height: 70px; object-fit: cover">
+                        {{else}}
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 70px; height: 70px">
+                        {{/if}}
+                            
+                        <h5 class="my-1 ml-3">{{me.name}}</h5>
                     </div>
-                    <a class="text-muted mb-1 block pl-2"><i class="fas fa-shopping-cart mr-2"></i>Đơn hàng</a>
-                    <a class="text-muted mb-1 block pl-2"><i class="fas fa-user mr-2"></i>Thông tin</a>
-                    <a class="text-muted mb-1 block pl-2"><i class="fas fa-map mr-2"></i>Địa chỉ</a>
+                    <a href="me" class="text-muted mb-1 block pl-2"><i class="fas fa-shopping-cart mr-2"></i>Đơn hàng</a>
+                    <a href="info" class="text-muted mb-1 block pl-2"><i class="fas fa-user mr-2"></i>Thông tin</a>
+                    <a href="addr" class="text-muted mb-1 block pl-2"><i class="fas fa-map mr-2"></i>Địa chỉ</a>
                 </div>
             </div>
         </div>

@@ -7,6 +7,9 @@ const homeRouter = require('./home')
 const checkoutRouter = require('./checkout')
 const testRouter = require('./test')
 const meRouter = require('./me')
+const infoRouter = require('./info')
+const addrRouter = require('./addr')
+const editRouter = require('./edit')
 
 const bodyParser = require('body-parser')
 
@@ -22,6 +25,9 @@ function route(app){
     app.use('/checkout', urlencodedParser, checkoutRouter)
     app.use('/test', urlencodedParser, testRouter)
     app.use('/me', urlencodedParser, meRouter)
+    app.use('/info', urlencodedParser, infoRouter)
+    app.use('/addr', urlencodedParser, addrRouter)
+    app.use('/edit', urlencodedParser, editRouter)
     app.use('/', homeRouter)
     
 }

@@ -49,8 +49,9 @@ Orders.getOrderDetail = (user_id, callback) =>{
     var sqlGetOrdered = "select * from products, images, order_items, orders where images.product_id = products.product_id and products.product_id = order_items.product_id and orders.order_id = order_items.order_id and images.isdefault = 1 and user_id = "+ user_id
     var sqlGetCountCart = "select count(user_id) as count from carts where user_id = " + user_id + " group by user_id"
     var sqlGetCatalog = "select catalogies.catalog_id, catagory, cata_link, count(products.product_id) as count from catalogies, products where catalogies.catalog_id = products.catalog_id group by catalogies.catalog_id, catagory, cata_link"
+    var sqlGetInfo = "select * from users where user_id = " + user_id
 
-    db.query(sqlGetOrdered + ";" + sqlGetCountCart + "; " + sqlGetCatalog, (err, items)=>{
+    db.query(sqlGetOrdered + ";" + sqlGetCountCart + "; " + sqlGetCatalog + "; " + sqlGetInfo, (err, items)=>{
         if (err){
             console.log(err)
             callback(null)

@@ -1,0 +1,56 @@
+<!-- Shop Start -->
+<div class="container-fluid pt-4">
+    <div class="row">
+        <!-- Shop Sidebar Start -->
+        <div class="col-lg-3 col-md-12">
+            <div class="card mb-4 border-0 bg-secondary pl-4">
+                <div class="card-body">
+                    <div class="flex mb-4">
+                        {{#if me.avatar}}
+                        <img src="{{me.avatar}}" alt="avatar" class="rounded-circle img-fluid" style="width: 70px; height: 70px; object-fit: cover">
+                        {{else}}
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 70px; height: 70px">
+                        {{/if}}
+                            
+                        <h5 class="my-1 ml-3">{{me.name}}</h5>
+                    </div>
+                    <a href="me" class="text-muted mb-1 block pl-2"><i class="fas fa-shopping-cart mr-2"></i>Đơn hàng</a>
+                    <a href="info" class="text-muted mb-1 block pl-2"><i class="fas fa-user mr-2"></i>Thông tin</a>
+                    <a href="addr" class="text-muted mb-1 block pl-2"><i class="fas fa-map mr-2"></i>Địa chỉ</a>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Sidebar End -->
+
+        <!-- Shop Product Start -->
+        <div class="col-lg-9 col-md-12">
+            <div class="row pb-3 px-5">
+                <form name="sentMessage" class="w-2/4" action="" method="POST">
+                    <div class="">
+                        <div class="control-group mb-3">
+                            <label for="name">Tên</label>
+                            <input type="text" class="form-control" name="name" placeholder="Nhập tên bạn" value="{{me.name}}"
+                                required="required" data-validation-required-message="Please enter your name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group mb-3">
+                            <label for="name">Số điện thoại</label>
+                            <input type="text" class="form-control" name="phone_number" placeholder="Nhập số điện thoại" value="{{me.phone_number}}" required="required" data-validation-required-message="Please enter a subject" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group mb-3">
+                            <label for="name">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email" value="{{me.email}}"
+                                required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        {{!-- <a href="" class="btn btn-primary py-2 px-4">Đổi mật khẩu</a> --}}
+                    </div>
+                    <button class="btn btn-primary py-2 px-4" type="submit">Lưu thay đổi</button>
+                </form>
+            </div>
+        </div>
+        <!-- Shop Product End -->
+    </div>
+</div>
+<!-- Shop End -->

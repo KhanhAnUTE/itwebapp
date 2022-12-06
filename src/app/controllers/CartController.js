@@ -12,17 +12,16 @@ class CartController{
                 var quantity = 1
                 var to_price = quantity * price
                 Carts.add(user_id, product_id, quantity, to_price, (flag)=>{
-                    
+                    res.redirect('back')
                 })
             }
             else{
                 var type = 'plus'
                 Carts.modifyQuantity(user_id, product_id, type, (flag)=>{
-
+                    res.redirect('back')
                 })
             }
         })
-        res.redirect('back')
     }
 
     //GET /cart/delete
