@@ -1,6 +1,29 @@
 const Carts = require("../models/CartModel")
 
 class CartController{
+    //GET /cart/add-to-cart
+    addCart(req, res){
+        var product_id = req.query.product_id
+        var user_id = req.query.user_id
+        var price = req.query.price
+
+        Carts.getQuantity(user_id, product_id, (count)=>{
+            if (count == 0 || count == null){
+                var quantity = 1
+                var to_price = quantity * price
+                Carts.add(user_id, product_id, quantity, to_price, (flag)=>{
+                    
+                })
+            }
+            else{
+                var type = 'plus'
+                Carts.modifyQuantity(user_id, product_id, type, (flag)=>{
+
+                })
+            }
+        })
+        res.redirect('back')
+    }
 
     //GET /cart/delete
     delete(req, res){
@@ -56,10 +79,7 @@ class CartController{
                 shipFee,
                 saveFee,
             })
-            // res.send(items[0])
-            // res.send(items)
         })
-        // res.render('cart', {page: 'Giỏ hàng'})
     }
 }
 

@@ -3,41 +3,18 @@ const Products = require('../models/ProductsModel')
 
 class ShopController{
 
-    //GET /shop/add-to-cart
-    addCart(req, res){
-        var product_id = req.query.product_id
-        var user_id = req.query.user_id
-        var price = req.query.price
-
-        Carts.getQuantity(user_id, product_id, (count)=>{
-            if (count == 0 || count == null){
-                var quantity = 1
-                var to_price = quantity * price
-                Carts.add(user_id, product_id, quantity, to_price, (flag)=>{
-                    
-                })
-            }
-            else{
-                var type = 'plus'
-                Carts.modifyQuantity(user_id, product_id, type, (flag)=>{
-
-                })
-            }
-        })
-        res.redirect('back')
-    }
-
     //GET /shop
     show(req, res){
         const user_id = 1
-        if (req.query.brandsId) res.locals.brandsId = req.query.brandsId
-        if (req.query.gendersId) res.locals.gendersId = req.query.gendersId
-        if (req.query.for_agesId) res.locals.for_agesId = req.query.for_agesId
-        if (req.query.page) res.locals.page = req.query.page
-        if (req.query.sort) res.locals.sort = req.query.sort
-        if (req.query.catalog) res.locals.catalog = req.query.catalog
+        const filters = {}
+        if (req.query.brandsId) filters.brandsId = req.query.brandsId
+        if (req.query.gendersId) filters.gendersId = req.query.gendersId
+        if (req.query.for_agesId) filters.for_agesId = req.query.for_agesId
+        if (req.query.page) filters.page = req.query.page
+        if (req.query.sort) filters.sort = req.query.sort
+        if (req.query.catalog) filters.catalog = req.query.catalog
 
-        Products.getFilter(user_id, res.locals, (items) => {
+        Products.getFilter(user_id, filters, (items) => {
                 if (items != null)
                     res.render('shop', {
                         page: 'Cửa hàng',

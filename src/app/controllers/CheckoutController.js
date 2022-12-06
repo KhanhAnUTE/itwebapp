@@ -15,7 +15,7 @@ class Checkout{
 
     //GET /checkout
     checkout(req, res){
-        // res.render('checkout')
+
         const user_id = 1
         Carts.getCheckOut(user_id, (items) => {
             var shipFee = 22000
