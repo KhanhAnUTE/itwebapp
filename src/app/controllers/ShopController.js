@@ -48,6 +48,7 @@ class ShopController{
                 imgs: items[1],
                 countCart: items[2][0],
                 catalogies: items[3],
+                bestSeller: items[4],
             })
         })
     }

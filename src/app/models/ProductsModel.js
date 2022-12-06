@@ -28,7 +28,7 @@ Products.getAllProducts = (callback) => {
 
 Products.getProductDetailBySlug = (slug, callback) => {
     var user_id = 1
-    db.query("select * from products, brands, genders, for_ages, catalogies where products.brand_id = brands.brand_id and products.gender_id = genders.gender_id and products.for_age_id = for_ages.for_age_id and products.catalog_id = catalogies.catalog_id and products.slug = ?; select link from products, images where products.product_id = images.product_id and slug = ?; select count(user_id) as count from carts where carts.user_id = " + user_id + " group by user_id; select * from catalogies" , [slug, slug], (err, product) => {
+    db.query("select * from products, brands, genders, for_ages, catalogies where products.brand_id = brands.brand_id and products.gender_id = genders.gender_id and products.for_age_id = for_ages.for_age_id and products.catalog_id = catalogies.catalog_id and products.slug = ?; select link from products, images where products.product_id = images.product_id and slug = ?; select count(user_id) as count from carts where carts.user_id = " + user_id + " group by user_id; select catalogies.catalog_id, catagory, cata_link, count(products.product_id) as count from catalogies, products where catalogies.catalog_id = products.catalog_id group by catalogies.catalog_id, catagory, cata_link;  select * from products, images where products.product_id = images.product_id and images.isdefault = 1 LIMIT 4" , [slug, slug], (err, product) => {
         if (err){
             console.log(err)
             callback(null)
@@ -49,15 +49,15 @@ Products.getFilter = (user_id, filter, callback) => {
     
     if (filter.brandsId){
         brandList = filter.brandsId.join(", ")
-        sqlQuery1 += " and brands.id in (" + brandList + ")"
+        sqlQuery1 += " and brands.brand_id in (" + brandList + ")"
     }
     if (filter.gendersId){
         genderList = filter.gendersId.join(", ")
-        sqlQuery1 += " and genders.id in (" + genderList + ")"
+        sqlQuery1 += " and genders.gender_id in (" + genderList + ")"
     }
     if (filter.for_agesId){
         for_ageList = filter.for_agesId.join(", ")
-        sqlQuery1 += " and for_ages.id in (" + for_ageList + ")"
+        sqlQuery1 += " and for_ages.for_age_id in (" + for_ageList + ")"
     }
     if (filter.catalog){
         sqlQuery1 += " and products.catalog_id = " + filter.catalog
