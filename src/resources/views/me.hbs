@@ -1,0 +1,75 @@
+<!-- Shop Start -->
+<div class="container-fluid pt-4">
+    <div class="row">
+        <!-- Shop Sidebar Start -->
+        <div class="col-lg-3 col-md-12">
+            <div class="card mb-4 border-0 bg-secondary pl-4">
+                <div class="card-body">
+                    <div class="flex mb-4">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 70px;">
+                        <h5 class="my-1 ml-3">John Smith</h5>
+                    </div>
+                    <a class="text-muted mb-1 block pl-2"><i class="fas fa-shopping-cart mr-2"></i>Đơn hàng</a>
+                    <a class="text-muted mb-1 block pl-2"><i class="fas fa-user mr-2"></i>Thông tin</a>
+                    <a class="text-muted mb-1 block pl-2"><i class="fas fa-map mr-2"></i>Địa chỉ</a>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Sidebar End -->
+
+        <!-- Shop Product Start -->
+        <div class="col-lg-9 col-md-12">
+            <div class="row pb-3">
+                {{#each product}}
+                <div class="bg-secondary rounded-lg mb-4">
+                    <table class="table order-table text-center mb-0">
+                        <tbody class="align-middle">
+                            <tr>
+                                <th>#Ngày đặt hàng {{date this.order_date}}</th>
+                                <th></th>
+                                <th></th>
+                                {{#if this.status}}
+                                <th>Đã giao hàng</th>
+                                {{else}}
+                                <th>Đang chờ giao hàng</th>
+                                {{/if}}
+                                <th></th>
+                            </tr>
+                            {{#each this.pros}}
+                            <tr>
+                                <td class="align-middle text-left flex max-w-xl">
+                                    <img src="{{this.link}}" alt="" class="mr-3 w-32">
+                                    <a href="shop/{{this.slug}}" class="p-1 hide-content-1 m-0 text-lg font-bold">
+                                        <span class="hide-content-1">{{this.product}}</span>
+                                        <span class="hide-content-2 text-base font-normal">{{this.description}}</span>
+                                        <span class="hide-content-2 text-base font-normal">x{{this.quantity}}</span>
+                                    </a>
+                                </td>
+                                <td class="align-middle"></td>
+                                <td class="align-middle"></td>
+                                <td class="align-middle">{{currency this.total_price}}</td>
+                                <td class="align-middle"></td>
+                            </tr>
+                            {{/each}}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-primary text-xl font-semibold">Tổng đơn</td>
+                                <td class="text-xl font-semibold">{{currency this.order_total}}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {{else}}
+                <div class="text-center p-5 bg-secondary w-full">
+                    <h3 class="text-lg" style="opacity: .8;">Không có đơn hàng nào</h3>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <!-- Shop Product End -->
+    </div>
+</div>
+<!-- Shop End -->

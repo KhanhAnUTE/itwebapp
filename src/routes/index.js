@@ -6,6 +6,7 @@ const signupRouter = require('./signup')
 const homeRouter = require('./home')
 const checkoutRouter = require('./checkout')
 const testRouter = require('./test')
+const meRouter = require('./me')
 
 const bodyParser = require('body-parser')
 
@@ -20,7 +21,7 @@ function route(app){
     app.use('/signup', urlencodedParser, signupRouter)
     app.use('/checkout', urlencodedParser, checkoutRouter)
     app.use('/test', urlencodedParser, testRouter)
-
+    app.use('/me', urlencodedParser, meRouter)
     app.use('/', homeRouter)
     
 }

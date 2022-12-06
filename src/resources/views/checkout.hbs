@@ -1,86 +1,97 @@
 <!-- Checkout Start -->
-<script></script>
+<form name="submit-form" id="submit-form" method="post">
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 flex-col">
+            {{#each addr}}
+            {{#if this.isdefault}}
+            <div class="mb-1 py-3 bg-secondary rounded-lg">
+                <p class="mb-3 text-lg px-4 text-primary">Địa chỉ giao hàng<i class="fa fa-map pl-2"
+                        aria-hidden="true"></i>
+                </p>
+                <input type="text" value="{{this.addr_id}}" name="addr_id" style="display: none;">
+                <div class="row px-4">
+                    <p class="text-primary px-xl-3 font-medium">{{this.own_name}}</p>
+                    <p style="opacity: 0.7;" class="px-xl-5">{{this.addr_phone}}</p>
+                    <p style="opacity: 0.7;" class="px-xl-5">{{this.street}}, {{this.ward}}, {{this.district}},
+                        {{this.city}}</p>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
 
-<div class="container-fluid pt-5">
-    <div class="row px-xl-5 flex-col">
-        {{#each addr}}
-        {{#if this.isdefault}}
-        <div class="mb-1 py-3 bg-secondary rounded-lg">
-            <p class="mb-3 text-lg px-4">Địa chỉ giao hàng<i class="fa fa-map text-primary pl-2" aria-hidden="true"></i>
-            </p>
-            <div class="row px-4">
-                <p class="text-primary px-xl-3">{{this.own_name}}</p>
-                <p style="opacity: 0.7;" class="px-xl-5">{{this.addr_phone}}</p>
-                <p style="opacity: 0.7;" class="px-xl-5">{{this.street}}, {{this.ward}}, {{this.district}},
-                    {{this.city}}</p>
+            {{!-- select the addr --}}
+            <div class="mb-4 bg-secondary rounded-lg mt-0">
+                <button class="btn border dropdown-toggle w-full" type="button" id="triggerId" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Chọn địa chỉ</button>
+                <form action="" name="addrSelection" class="">
+                    <div class="dropdown-menu dropdown-menu-right w-full row px-xl-5 flex-col pt-0"
+                        aria-labelledby="triggerId" style="background-color: transparent !important; border:none;">
+                        {{#each addr}}
+                        <a class="dropdown-item bg-secondary" href="checkout/set-default?addr_id={{this.addr_id}}">
+                            <p class="font-semibold">{{this.own_name}}</p>
+                            <p style="opacity: 0.7;">{{this.addr_phone}}</p>
+                            <p style="opacity: 0.7;">{{this.street}}, {{this.ward}}, {{this.district}}, {{this.city}}
+                            </p>
+                        </a>
+                        {{/each}}
+                        <a class="dropdown-item bg-secondary" href="" style="box-shadow: 1px 3px rgba(0, 0, 0, .2);"><i
+                                class="fas fa-plus pr-2"></i>Thêm địa chỉ mới</a>
+                    </div>
+                </form>
             </div>
         </div>
-        {{/if}}
-        {{/each}}
 
-        {{!-- select the addr --}}
-        <div class="mb-4 bg-secondary rounded-lg mt-0">
-            <button class="btn border dropdown-toggle w-full" type="button" id="triggerId" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">Chọn địa chỉ</button>
-            <form action="" name="addrSelection" class="">
-                <div class="dropdown-menu dropdown-menu-right w-full row px-xl-5 flex-col pt-0" aria-labelledby="triggerId" style="background-color: transparent !important; border:none;">
-                    {{#each addr}}
-                    <a class="dropdown-item bg-secondary" href="checkout/set-default?addr_id={{this.addr_id}}" >
-                        <p class="text-primary">{{this.own_name}}</p>
-                        <p style="opacity: 0.7;">{{this.addr_phone}}</p>
-                        <p style="opacity: 0.7;">{{this.street}}, {{this.ward}}, {{this.district}}, {{this.city}}</p>
-                    </a>
+
+        <div class="row px-xl-5 flex-col">
+            <div class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Tổng đơn hàng</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="font-weight-medium mb-3">Sản phẩm</h5>
+                    {{#each product}}
+                    <input type="text" name="productId[]" value="{{this.product_id}}" style="display: none;">
+                    <div class="d-flex justify-content-between mb-3">
+                        <input type="text" name="quantity[]" value="{{this.quantity}}" style="display: none;">
+
+                        <a href="shop/{{this.slug}}">{{this.product}} ({{this.quantity}} sản phẩm)</a>
+                        <input type="text" name="total_price[]" value="{{this.to_price}}" style="display: none;">
+                        <p>{{currency this.to_price}}</p>
+                    </div>
                     {{/each}}
-                    <a class="dropdown-item bg-secondary" href="" style="box-shadow: 1px 3px rgba(0, 0, 0, .2);"><i class="fas fa-plus pr-2"></i>Thêm địa chỉ mới</a>
+                    <hr class="mt-0">
+                    <div class="d-flex justify-content-between my-3 pt-1">
+                        <h6 class="font-weight-medium">Tổng đơn</h6>
+                        <h6 class="font-weight-medium">{{currency sum.sum}}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <input type="text" name="shipping_price" value="{{shipFee}}" style="display: none;">
+                        <h6 class="font-weight-medium">Phí vận chuyển</h6>
+                        <h6 class="font-weight-medium">{{currency shipFee}}</h6>
+                    </div>
                 </div>
-            </form>
-        </div>
-    </div>
-
-
-    <div class="row px-xl-5 flex-col">
-        <div class="card border-secondary mb-5">
-            <div class="card-header bg-secondary border-0">
-                <h4 class="font-weight-semi-bold m-0">Tổng đơn hàng</h4>
-            </div>
-            <div class="card-body">
-                <h5 class="font-weight-medium mb-3">Sản phẩm</h5>
-                {{#each product}}
-                <div class="d-flex justify-content-between mb-3">
-                    <a href="shop/{{this.slug}}">{{this.product}} ({{this.quantity}} sản phẩm)</a>
-                    <p>{{currency this.to_price}}</p>
-                </div>
-                {{/each}}
-                <hr class="mt-0">
-                <div class="d-flex justify-content-between my-3 pt-1">
-                    <h6 class="font-weight-medium">Tổng đơn</h6>
-                    <h6 class="font-weight-medium">{{currency sum.sum}}</h6>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <h6 class="font-weight-medium">Phí vận chuyển</h6>
-                    <h6 class="font-weight-medium">{{currency shipFee}}</h6>
+                <div class="card-footer border-secondary bg-transparent">
+                    <div class="d-flex justify-content-between mt-2">
+                        <input type="text" name="order_total" value="{{sum shipFee sum.sum}}" style="display: none;">
+                        <h5 class="font-weight-bold">Tổng</h5>
+                        <h5 class="font-weight-bold">{{currencySum shipFee sum.sum}}</h5>
+                    </div>
                 </div>
             </div>
-            <div class="card-footer border-secondary bg-transparent">
-                <div class="d-flex justify-content-between mt-2">
-                    <h5 class="font-weight-bold">Tổng</h5>
-                    <h5 class="font-weight-bold">{{currencySum shipFee sum.sum}}</h5>
+            <div class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Phương thức thanh toán</h4>
                 </div>
-            </div>
-        </div>
-        <div class="card border-secondary mb-5">
-            <div class="card-header bg-secondary border-0">
-                <h4 class="font-weight-semi-bold m-0">Phương thức thanh toán</h4>
-            </div>
-            <div class="pl-3 py-3">
-                Thanh toán khi nhận hàng
-            </div>
-            <div class="card-footer border-secondary bg-transparent mt-2">
-                <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" type="submit">Thanh
-                    toán</button>
+                <div class="pl-3 py-3">
+                    Thanh toán khi nhận hàng
+                </div>
+                <div class="card-footer border-secondary bg-transparent mt-2">
+                    <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" type="submit"
+                        onclick="submitForm()">Thanh
+                        toán</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
+</form>
 <!-- Checkout End -->

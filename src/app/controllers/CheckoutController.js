@@ -1,4 +1,5 @@
 const Carts = require("../models/CartModel")
+const Orders = require("../models/OrderModel")
 
 class Checkout{
 
@@ -31,9 +32,49 @@ class Checkout{
                 shipFee,
                 saveFee,
             })
-            // res.send(items[5])
         })
-        // res.render('cart', {page: 'Giỏ hàng'})
+    }
+
+    //GET /checkout/order
+    order(req, res)
+    {
+        var user_id = 1
+        var order = {}
+        var order_items = []
+
+        //init order
+        order.user_id = user_id
+        order.addr_id = req.body.addr_id
+        order.shipping_price = req.body.shipping_price
+        order.order_total = req.body.order_total
+        order.status = false
+
+        //init order_item
+        var length = req.body["productId[]"].length
+        for (var i = 0; i < length; i++){
+            order_items.push({})
+            order_items[i].product_id = req.body["productId[]"][i]
+            order_items[i].quantity = req.body["quantity[]"][i]
+            order_items[i].total_price = req.body["total_price[]"][i]
+            
+        }
+        
+        // res.send(order_items)   
+        Orders.makeOrder(order, (flag)=>{
+            // console.log(flag)
+        })
+
+        Orders.getNewOrder((order_id)=>{
+            for (var i = 0; i < length; i++){
+                order_items[i].order_id = order_id
+                Orders.makeOrderItem(order_items[i], (flag)=>{
+                    // console.log(flag)
+                })
+            }
+        })
+        
+
+        res.redirect('/me')
     }
 }
 

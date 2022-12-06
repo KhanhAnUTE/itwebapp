@@ -35,6 +35,12 @@ app.engine('hbs', hbs.engine({
                 currency: 'VND',
               }).format(int) 
         },
+        date: (mySQLDate)=>{
+            var jsDate = new Date(mySQLDate.toString())
+
+
+            return jsDate.toLocaleDateString()
+        },
         currencySum: (a, b) => {
             if (a!=null && b !=null)
                 return Intl.NumberFormat('vi-VI', {
