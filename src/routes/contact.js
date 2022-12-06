@@ -5,5 +5,4 @@ const contactController = require('../app/controllers/ContactController')
 
 router.use('/', contactController.show)
 
-
 module.exports = router

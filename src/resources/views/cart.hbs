@@ -17,7 +17,10 @@
                         <tr>
                             <td class="align-middle text-left flex max-w-xl">
                                 <img src="{{this.link}}" alt="" class="mr-0 w-32"> 
-                                <a href="shop/{{this.slug}}" class="p-1 hide-content-1 m-0 text-lg font-bold">{{this.product}}<br><span class="hide-content-2 text-base font-normal">{{this.description}}</span></a>  
+                                <a href="shop/{{this.slug}}" class="p-1 hide-content-1 m-0 text-lg font-bold">
+                                    <span class="hide-content-1">{{this.product}}</span><br>
+                                    <span class="hide-content-2 text-base font-normal">{{this.description}}</span>
+                                </a>
                             </td>
 
                             <td class="align-middle">{{currency this.price}}</td>
@@ -90,7 +93,7 @@
                             <span class="">Tiết kiệm</span>
                             <span class="">{{currency saveFee}}đ</span>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3 w-48">Mua hàng</button>
+                            <a href="cart/checkout" class="btn btn-block btn-primary my-3 py-3 w-48">Mua hàng</a>
                     </div>
                 </div>
             </div>
@@ -141,7 +144,7 @@
                             <span class="">Tiết kiệm</span>
                             <span class="">{{currency saveFee}}đ</span>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3 w-48">Mua hàng</button>
+                        <a href="cart/checkout" class="btn btn-block btn-primary my-3 py-3 w-48">Mua hàng</a>
                     </div>
                 </div>
             </div>
@@ -155,7 +158,6 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", ()=>{
-
         $(window).scroll(function(){
             var footer = document.getElementById("footer")
             if (window.scrollY >= document.body.scrollHeight - footer.scrollHeight - screen.height)

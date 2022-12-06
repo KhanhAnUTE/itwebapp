@@ -3,8 +3,8 @@ const shopRouter = require('./shop')
 const cartRouter = require('./cart')
 const loginRouter = require('./login')
 const signupRouter = require('./signup')
-
-const newsRouter = require('./news')
+const homeRouter = require('./home')
+const checkoutRouter = require('./checkout')
 
 function route(app){
     app.use('/contact', contactRouter)
@@ -12,9 +12,9 @@ function route(app){
     app.use('/cart', cartRouter)
     app.use('/login', loginRouter)
     app.use('/signup', signupRouter)
-    app.use('/news', newsRouter)
+    app.use('/checkout', checkoutRouter)
 
-    app.get('/', (req, res) =>  res.render('home'))
+    app.use('/', homeRouter)
 }
 
 module.exports = route

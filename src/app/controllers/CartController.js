@@ -41,6 +41,7 @@ class CartController{
 
     //GET /cart
     show(req, res){
+        // res.render('checkout')
         const user_id = 1
         Carts.getCartDetail(user_id, (items) => {
             var shipFee = 22000
@@ -50,6 +51,8 @@ class CartController{
                 product: items[0],
                 count: items[1][0],
                 sum: items[2][0],
+                countCart: items[3][0],
+                catalogies: items[4],
                 shipFee,
                 saveFee,
             })

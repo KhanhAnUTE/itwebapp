@@ -1,0 +1,127 @@
+<!-- Checkout Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            {{#each addr}}
+            {{#if this.isdefault}}
+                <div class="mb-4">
+                    <h4 class="font-weight-semi-bold mb-4">Địa chỉ</h4>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Tên</label>
+                            <input class="form-control" type="text" placeholder="{{this.own_name}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" placeholder="{{this.email}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Số điện thoại</label>
+                            <input class="form-control" type="text" placeholder="{{this.addr_phone}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Đường</label>
+                            <input class="form-control" type="text" placeholder="{{this.street}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Thành phố/Tỉnh</label>
+                            <input class="form-control" type="text" placeholder="{{this.city}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Quận/Huyện</label>
+                            <input class="form-control" type="text" placeholder="{{this.ward}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse mb-4" id="shipping-address">
+                    <h4 class="font-weight-semi-bold mb-4">Địa chỉ</h4>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Tên</label>
+                            <input class="form-control" type="text" placeholder="{{this.own_name}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" placeholder="{{this.email}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Số điện thoại</label>
+                            <input class="form-control" type="text" placeholder="{{this.addr_phone}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Đường</label>
+                            <input class="form-control" type="text" placeholder="{{this.street}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Thành phố/Tỉnh</label>
+                            <input class="form-control" type="text" placeholder="{{this.city}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Quận/Huyện</label>
+                            <input class="form-control" type="text" placeholder="{{this.district}}">
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+            {{/each}}
+
+            {{!-- select the addr --}}
+            <button class="btn border dropdown-toggle w-full" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chọn địa chỉ</button>
+            <form action="" name="addrSelection">
+                <div class="dropdown-menu dropdown-menu-right w-full" aria-labelledby="triggerId">
+                    {{#each addr}}
+                        <a class="dropdown-item" href="checkout/set-default?addr_id={{this.addr_id}}">
+                            <p class="text-primary">{{this.own_name}}</p>
+                            <p style="opacity: 0.7;">{{this.addr_phone}}</p>
+                            <p style="opacity: 0.7;">{{this.street}}, {{this.ward}}, {{this.district}}, {{this.city}}</p>
+                        </a>
+                    {{/each}}
+                    <a class="dropdown-item" href=""><i class="fas fa-plus pr-2"></i>Thêm địa chỉ mới</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <div class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Tổng đơn hàng</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="font-weight-medium mb-3">Sản phẩm</h5>
+                    {{#each product}}
+                    <div class="d-flex justify-content-between mb-3">
+                        <a href="shop/{{this.slug}}">{{this.product}} ({{this.quantity}})</a>
+                        <p>{{currency this.to_price}}</p>
+                    </div>
+                    {{/each}}
+                    <hr class="mt-0">
+                    <div class="d-flex justify-content-between my-3 pt-1">
+                        <h6 class="font-weight-medium">Tổng đơn</h6>
+                        <h6 class="font-weight-medium">{{currency sum.sum}}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Phí vận chuyển</h6>
+                        <h6 class="font-weight-medium">{{currency shipFee}}</h6>
+                    </div>
+                </div>
+                <div class="card-footer border-secondary bg-transparent">
+                    <div class="d-flex justify-content-between mt-2">
+                        <h5 class="font-weight-bold">Tổng</h5>
+                        <h5 class="font-weight-bold">{{currencySum shipFee sum.sum}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Phương thức thanh toán</h4>
+                </div>
+                <div class="pl-3">
+                    Thanh toán khi nhận hàng
+                </div>
+                <div class="card-footer border-secondary bg-transparent mt-2">
+                    <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Thanh toán</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout End -->
